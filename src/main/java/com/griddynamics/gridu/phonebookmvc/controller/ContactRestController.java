@@ -2,6 +2,7 @@ package com.griddynamics.gridu.phonebookmvc.controller;
 
 import com.griddynamics.gridu.phonebookmvc.entity.Contact;
 import com.griddynamics.gridu.phonebookmvc.service.PhonebookService;
+import exception.ContactAlreadyExistException;
 import exception.ContactNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +20,13 @@ public class ContactRestController {
 
     @PostMapping("/addContact")
     @ResponseStatus(HttpStatus.CREATED)
-    public Contact addContact(@RequestBody Contact contact) {
+    public Contact addContact(@RequestBody Contact contact) throws ContactAlreadyExistException {
         return service.saveContact(contact);
     }
 
     @PostMapping("/addContacts")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Contact> saveAllContacts(@RequestBody List<Contact> contacts) {
+    public List<Contact> saveAllContacts(@RequestBody List<Contact> contacts) throws ContactAlreadyExistException {
         return service.saveAllContacts(contacts);
     }
 

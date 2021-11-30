@@ -2,6 +2,7 @@ package com.griddynamics.gridu.phonebookmvc.service;
 
 import com.griddynamics.gridu.phonebookmvc.entity.Contact;
 import com.griddynamics.gridu.phonebookmvc.repository.ContactRepository;
+import exception.ContactAlreadyExistException;
 import exception.ContactNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +16,23 @@ public class PhonebookServiceIml implements  PhonebookService {
     private ContactRepository repository;
 
     @Override
-    public Contact saveContact(Contact contact) {
-        return repository.save(contact);
+    public Contact saveContact(Contact contact) throws ContactAlreadyExistException {
+        try {
+            getContactByName(contact.getName());
+        } catch (ContactNotFoundException e) {
+            return repository.save(contact);
+        }
+        throw new ContactAlreadyExistException(contact.getName());
     }
 
     @Override
-    public List<Contact> saveAllContacts(List<Contact> contacts) {
+    public List<Contact> saveAllContacts(List<Contact> contacts) throws ContactAlreadyExistException {
+        for (Contact contact : contacts) {
+            try {
+                getContactByName(contact.getName());
+                throw new ContactAlreadyExistException(contact.getName());
+            } catch (ContactNotFoundException e) {}
+        }
         return repository.saveAll(contacts);
     }
 
