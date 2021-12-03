@@ -2,8 +2,8 @@ package com.griddynamics.gridu.phonebookmvc.service;
 
 import com.griddynamics.gridu.phonebookmvc.entity.Contact;
 import com.griddynamics.gridu.phonebookmvc.repository.ContactRepository;
-import exception.ContactAlreadyExistException;
-import exception.ContactNotFoundException;
+import com.griddynamics.gridu.phonebookmvc.exception.ContactAlreadyExistException;
+import com.griddynamics.gridu.phonebookmvc.exception.ContactNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

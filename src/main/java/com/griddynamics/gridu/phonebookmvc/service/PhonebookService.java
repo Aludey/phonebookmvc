@@ -1,8 +1,8 @@
 package com.griddynamics.gridu.phonebookmvc.service;
 
 import com.griddynamics.gridu.phonebookmvc.entity.Contact;
-import exception.ContactAlreadyExistException;
-import exception.ContactNotFoundException;
+import com.griddynamics.gridu.phonebookmvc.exception.ContactAlreadyExistException;
+import com.griddynamics.gridu.phonebookmvc.exception.ContactNotFoundException;
 
 import java.util.List;
 

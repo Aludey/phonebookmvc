@@ -1,4 +1,4 @@
-package exception;
+package com.griddynamics.gridu.phonebookmvc.exception;
 
 public class ContactNotFoundException extends Exception {
 

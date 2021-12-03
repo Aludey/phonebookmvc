@@ -1,7 +1,7 @@
 package com.griddynamics.gridu.phonebookmvc.advice;
 
-import exception.ContactAlreadyExistException;
-import exception.ContactNotFoundException;
+import com.griddynamics.gridu.phonebookmvc.exception.ContactAlreadyExistException;
+import com.griddynamics.gridu.phonebookmvc.exception.ContactNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
