@@ -41,7 +41,6 @@ public class ContactRestController {
         return service.getContactByName(name);
     }
 
-
     @DeleteMapping("/deleteContact/{name}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteContact(@PathVariable String name) throws ContactNotFoundException {
