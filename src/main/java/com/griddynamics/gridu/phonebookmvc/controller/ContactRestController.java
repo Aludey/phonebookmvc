@@ -53,9 +53,23 @@ public class ContactRestController {
         return service.updateContact(updatedContact);
     }
 
-    @PutMapping("/addPhone/{name}")
+    @PutMapping("/addPhones/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public Contact addPhoneToContactByName(@PathVariable String name, @RequestBody String phone) throws ContactNotFoundException {
-        return service.addPhoneToContactByName(name, phone);
+    public Contact addPhonesToContactByName(@PathVariable String name, @RequestBody List<String> phones) throws ContactNotFoundException {
+        Contact updatedContact = service.getContactByName(name);
+        for (String phone : phones) {
+            updatedContact = service.addPhoneToContactByName(name, phone);
+        }
+        return updatedContact;
+    }
+
+    @PutMapping("/deletePhones/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public Contact deletePhonesFromContactByName(@PathVariable String name, @RequestBody List<String> phones) throws ContactNotFoundException {
+        Contact updatedContact = service.getContactByName(name);
+        for (String phone : phones) {
+            updatedContact = service.deletePhoneFromContactByName(name, phone);
+        }
+        return updatedContact;
     }
 }

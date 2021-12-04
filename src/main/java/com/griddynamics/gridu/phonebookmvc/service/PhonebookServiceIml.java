@@ -66,7 +66,14 @@ public class PhonebookServiceIml implements  PhonebookService {
     @Override
     public Contact addPhoneToContactByName(String name, String phone) throws ContactNotFoundException {
         Contact existingContact = getContactByName(name);
-        existingContact.setPhones(existingContact.getPhones() + ", " + phone);
+        existingContact.getPhones().add(phone);
+        return repository.save(existingContact);
+    }
+
+    @Override
+    public Contact deletePhoneFromContactByName(String name, String phone) throws ContactNotFoundException {
+        Contact existingContact = getContactByName(name);
+        existingContact.getPhones().remove(phone);
         return repository.save(existingContact);
     }
 

@@ -23,4 +23,6 @@ public interface PhonebookService {
     Contact updateContact(Contact updatedContact) throws ContactNotFoundException;
 
     Contact addPhoneToContactByName(String name, String phone) throws ContactNotFoundException;
+
+    Contact deletePhoneFromContactByName(String name, String phone) throws ContactNotFoundException;
 }
